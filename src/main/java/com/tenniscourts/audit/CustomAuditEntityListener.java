@@ -9,10 +9,22 @@ import java.net.UnknownHostException;
 import java.time.LocalDateTime;
 import java.util.Objects;
 
+/**
+ * The type Custom audit entity listener.
+ */
 public class CustomAuditEntityListener {
 
+    /**
+     * The constant USER_SYSTEM_ID.
+     */
     public final static Long USER_SYSTEM_ID = 1L;
 
+    /**
+     * Pre update.
+     *
+     * @param baseEntity the base entity
+     * @throws UnknownHostException the unknown host exception
+     */
     @PreUpdate
     public void preUpdate(BaseEntity baseEntity) throws UnknownHostException {
 
@@ -25,6 +37,12 @@ public class CustomAuditEntityListener {
         }
     }
 
+    /**
+     * Pre persist.
+     *
+     * @param baseEntity the base entity
+     * @throws UnknownHostException the unknown host exception
+     */
     @PrePersist
     public void prePersist(BaseEntity baseEntity) throws UnknownHostException {
         baseEntity.setDateUpdate(LocalDateTime.now());

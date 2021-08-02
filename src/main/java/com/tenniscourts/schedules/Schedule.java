@@ -20,6 +20,9 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * The type Schedule.
+ */
 @Entity
 @Table
 @Getter
@@ -45,6 +48,11 @@ public class Schedule extends BaseEntity<Long> {
     @OneToMany
     private List<Reservation> reservations;
 
+    /**
+     * Add reservation.
+     *
+     * @param reservation the reservation
+     */
     public void addReservation(Reservation reservation) {
         if (this.reservations == null) {
             this.reservations = new ArrayList<>();

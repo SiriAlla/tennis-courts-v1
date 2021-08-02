@@ -19,10 +19,20 @@ import static org.springframework.http.HttpStatus.BAD_REQUEST;
 import static org.springframework.http.HttpStatus.UNSUPPORTED_MEDIA_TYPE;
 
 
+/**
+ * The type Custom response entity exception handler.
+ */
 @Order(Ordered.HIGHEST_PRECEDENCE)
 @ControllerAdvice
 public class CustomResponseEntityExceptionHandler extends ResponseEntityExceptionHandler {
 
+    /**
+     * Handle entity already exists response entity.
+     *
+     * @param ex      the ex
+     * @param request the request
+     * @return the response entity
+     */
     @ExceptionHandler(AlreadyExistsEntityException.class)
     public final ResponseEntity<ErrorDetails> handleEntityAlreadyExists(AlreadyExistsEntityException ex, WebRequest request) {
         ErrorDetails errorDetails = new ErrorDetails(LocalDateTime.now(), ex.getMessage(),
@@ -30,6 +40,13 @@ public class CustomResponseEntityExceptionHandler extends ResponseEntityExceptio
         return new ResponseEntity<>(errorDetails, HttpStatus.CONFLICT);
     }
 
+    /**
+     * Handle entity not found response entity.
+     *
+     * @param ex      the ex
+     * @param request the request
+     * @return the response entity
+     */
     @ExceptionHandler(EntityNotFoundException.class)
     public final ResponseEntity<ErrorDetails> handleEntityNotFound(EntityNotFoundException ex, WebRequest request) {
         ErrorDetails errorDetails = new ErrorDetails(LocalDateTime.now(), ex.getMessage(),
@@ -37,6 +54,13 @@ public class CustomResponseEntityExceptionHandler extends ResponseEntityExceptio
         return new ResponseEntity<>(errorDetails, HttpStatus.NOT_FOUND);
     }
 
+    /**
+     * Handle business exception response entity.
+     *
+     * @param ex      the ex
+     * @param request the request
+     * @return the response entity
+     */
     @ExceptionHandler(BusinessException.class)
     public final ResponseEntity<ErrorDetails> handleBusinessException(EntityNotFoundException ex, WebRequest request) {
         ErrorDetails errorDetails = new ErrorDetails(LocalDateTime.now(), ex.getMessage(),
@@ -44,6 +68,13 @@ public class CustomResponseEntityExceptionHandler extends ResponseEntityExceptio
         return new ResponseEntity<>(errorDetails, HttpStatus.UNPROCESSABLE_ENTITY);
     }
 
+    /**
+     * Handle illegal argument exception response entity.
+     *
+     * @param ex      the ex
+     * @param request the request
+     * @return the response entity
+     */
     @ExceptionHandler(IllegalArgumentException.class)
     public final ResponseEntity<ErrorDetails> handleIllegalArgumentException(IllegalArgumentException ex, WebRequest request) {
         ErrorDetails errorDetails = new ErrorDetails(LocalDateTime.now(), ex.getMessage(),
@@ -72,6 +103,12 @@ public class CustomResponseEntityExceptionHandler extends ResponseEntityExceptio
         return buildResponseEntity(new ErrorDetails(LocalDateTime.now(), builder.substring(0, builder.length() - 2), ex.getLocalizedMessage()), UNSUPPORTED_MEDIA_TYPE);
     }
 
+    /**
+     * Handle constraint violation response entity.
+     *
+     * @param ex the ex
+     * @return the response entity
+     */
     @ExceptionHandler(javax.validation.ConstraintViolationException.class)
     public ResponseEntity<Object> handleConstraintViolation(
             javax.validation.ConstraintViolationException ex) {

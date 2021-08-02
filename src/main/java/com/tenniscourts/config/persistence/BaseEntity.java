@@ -16,6 +16,11 @@ import javax.persistence.MappedSuperclass;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 
+/**
+ * The type Base entity.
+ *
+ * @param <ID> the type parameter
+ */
 @MappedSuperclass
 @Getter
 @Setter

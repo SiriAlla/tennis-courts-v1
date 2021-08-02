@@ -13,6 +13,9 @@ import javax.persistence.Entity;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
+/**
+ * The type Tennis court.
+ */
 @Entity
 @Table
 @Getter

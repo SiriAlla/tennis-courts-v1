@@ -9,6 +9,9 @@ import lombok.Setter;
 
 import javax.validation.constraints.NotNull;
 
+/**
+ * The type Create reservation request dto.
+ */
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter

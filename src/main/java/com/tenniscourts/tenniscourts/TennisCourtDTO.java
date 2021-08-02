@@ -11,6 +11,9 @@ import lombok.ToString;
 import javax.validation.constraints.NotNull;
 import java.util.List;
 
+/**
+ * The type Tennis court dto.
+ */
 @Getter
 @Setter
 @ToString

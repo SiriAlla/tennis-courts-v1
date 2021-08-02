@@ -7,6 +7,9 @@ import lombok.Setter;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
 
+/**
+ * The type Create schedule request dto.
+ */
 @Getter
 @Setter
 public class CreateScheduleRequestDTO {

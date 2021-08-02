@@ -14,6 +14,9 @@ import javax.persistence.Entity;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
+/**
+ * The type Guest.
+ */
 @Entity
 @Table
 @Getter

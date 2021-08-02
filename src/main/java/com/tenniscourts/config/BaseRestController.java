@@ -5,10 +5,19 @@ import springfox.documentation.annotations.ApiIgnore;
 
 import java.net.URI;
 
+/**
+ * The type Base rest controller.
+ */
 @ApiIgnore
 public class BaseRestController {
 
-  protected URI locationByEntity(Long entityId){
+    /**
+     * Location by entity uri.
+     *
+     * @param entityId the entity id
+     * @return the uri
+     */
+    protected URI locationByEntity(Long entityId){
         return ServletUriComponentsBuilder.fromCurrentRequest().path(
                 "/{id}").buildAndExpand(entityId).toUri();
     }
